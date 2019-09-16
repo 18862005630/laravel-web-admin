@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AdminAccount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 /**
  * Class UserController
@@ -17,6 +18,13 @@ class UserController extends Controller
      * 管理员登录
      */
     public function login(Request $request){
+//        //获取url中的参数
+//        $str=$request->fullUrl();
+//        $param = substr($str,strpos($str, '?')+1);
+//        $param = explode("&",$param);
+//        var_dump($param);
+//        //获取url中的参数
+//        dd($request->all());
         $map = [
             'account' => $request->account,
             'password' => md5(env('MD5_SALT').md5($request->password))
