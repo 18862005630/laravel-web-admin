@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Models\AdminAccount;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use DB;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * Class UserController
@@ -16,31 +18,67 @@ class UserController extends Controller
 {
     /**
      * 管理员登录
+     *
      */
     public function login(Request $request){
-//        //获取url中的参数
-//        $str=$request->fullUrl();
-//        $param = substr($str,strpos($str, '?')+1);
-//        $param = explode("&",$param);
-//        var_dump($param);
-//        //获取url中的参数
-//        dd($request->all());
-        $map = [
+        //生成token
+//        $user = AdminAccount::where('id',1)->first();
+//        $token = JWTAuth::fromUser($user);
+//        dd($token);
+
+        //验证token
+//      $user = JWTAuth::parseToken()->authenticate();
+
+        //验证登录信息
+        $credentials = [
             'account' => $request->account,
-            'password' => md5(env('MD5_SALT').md5($request->password))
+            'password' => $request->password
         ];
-        $admin = AdminAccount::where($map)->first();
-        if(empty($admin)){
+
+        //用户判断登录是否成功,只有登录成功才能获取用户信息
+        if (! $token = auth('api')->attempt($credentials)) {
             return json_encode([
-                'code' => 500,
+                'code' => 401,
                 'msg' => '账号密码不匹配'
             ],JSON_UNESCAPED_UNICODE);
         }
+
+        //验证通过，则获取用户信息
+        $admin = auth()->user();
 
         return json_encode([
             'code' => 200,
             'msg' => '登录成功',
             'data' => $admin
         ],JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * 管理员账号注册
+     */
+    public function  register(Request $request){
+
+        //账号唯一性验证
+        if(AdminAccount::where('account',$request->account)->first()){
+            return json_encode([
+                'code' => 201,
+                'msg' => '当前账号已存在，请勿重复注册'
+            ],JSON_UNESCAPED_UNICODE);
+        }
+
+        //进行账号注册
+        $account = [
+            'account' => $request->account,
+            'password' => bcrypt($request->password),
+        ];
+        $admin = AdminAccount::Create($account,$account);
+        //生成token
+        $token = JWTAuth::fromUser($admin);
+
+        return response()->json([
+            'code' => 200,
+            'msg' => '注册成功'
+        ])->header('Authorization', 'Bearer '.$token);
+
     }
 }

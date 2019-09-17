@@ -1,4 +1,7 @@
 /*在线演示公共底部*/
+var url = window.location.href;
+var index = url.lastIndexOf("/");
+var param = url.slice(index+1)
 $(function(){
 	var buf = [];
 	buf.push('<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>');
@@ -14,7 +17,10 @@ $(function(){
 	// $('body').append('<div class="top-banner clearfix"><div class="fl"><a href="http://www.cnblogs.com/lhb25/p/10-useful-html5-css3-effect.html" target="_blank">&lt;&lt;8个前沿的 HTML5 & CSS3 效果【附源码下载】</a></div><div class="fr"><a href="http://www.cnblogs.com/lhb25/p/10-useful-web-effect.html" target="_blank">Web 开发中很实用的10个效果【附源码下载】&gt;&gt;</a></div></div>');
 
 	//登录
-	$('body').append('<div class="login clearfix"><div class="title"><a href="###" target="_blank">用户登录</a></div><form id="form"><input type="text" name="account" id="UserNuber" placeholder="用户名" value="" class="user" /><input type="Password" name="password" id="Password" placeholder="密码" value="" class="user" /><input type="button" class="sub" onclick="login()" value="登录"/></form></div>');
-	
+	if(param == 'login') {
+		$('body').append('<div class="login clearfix"><div class="title"><a href="###" target="_blank">用户登录</a></div><form id="form"><input type="text" name="account" id="UserNuber" placeholder="用户名" value="" class="user" /><input type="Password" name="password" id="Password" placeholder="密码" value="" class="user" /><input type="button" class="sub" onclick="login()" value="登录"/></form></div>');
+	}else if(param == 'register'){
+		$('body').append('<div class="login clearfix"><div class="title"><a href="###" target="_blank">用户注册</a></div><form id="form"><input type="text" name="account" id="UserNuber" placeholder="用户名" value="" class="user" /><input type="Password" name="password" id="Password" placeholder="密码" value="" class="user" /><input type="button" class="sub" onclick="login()" value="注册"/></form></div>');
+	}
 
 });
