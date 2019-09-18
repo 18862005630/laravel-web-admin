@@ -37,20 +37,20 @@ class UserController extends Controller
 
         //用户判断登录是否成功,只有登录成功才能获取用户信息
         if (! $token = auth('api')->attempt($credentials)) {
-            return json_encode([
+            return response()->json([
                 'code' => 401,
                 'msg' => '账号密码不匹配'
             ],JSON_UNESCAPED_UNICODE);
         }
 
         //验证通过，则获取用户信息
-        $admin = auth()->user();
+//        $admin = auth()->user();
 
-        return json_encode([
+        return response()->json([
             'code' => 200,
             'msg' => '登录成功',
-            'data' => $admin
-        ],JSON_UNESCAPED_UNICODE);
+        ],JSON_UNESCAPED_UNICODE)->header('Authorization', 'Bearer '.$token);
+
     }
 
     /**
@@ -60,7 +60,7 @@ class UserController extends Controller
 
         //账号唯一性验证
         if(AdminAccount::where('account',$request->account)->first()){
-            return json_encode([
+            return response()->json([
                 'code' => 201,
                 'msg' => '当前账号已存在，请勿重复注册'
             ],JSON_UNESCAPED_UNICODE);
@@ -80,5 +80,21 @@ class UserController extends Controller
             'msg' => '注册成功'
         ])->header('Authorization', 'Bearer '.$token);
 
+    }
+
+    /**
+     * 登出
+     */
+    public function logout(){
+//       var_dump('1111');
+//        Auth::guard('api')->logout();
+        JWTAuth::parseToken()->invalidate();
+//        $a = JWTAuth::setToken(JWTAuth::getToken())->invalidate();
+//        dd($a);
+
+        return response()->json([
+            'code' => 200,
+            'msg' => '成功退出'
+        ],JSON_UNESCAPED_UNICODE);
     }
 }

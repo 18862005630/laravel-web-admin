@@ -35,7 +35,8 @@
 	<link rel="stylesheet" href="assets/styles/style-black.min.css">
 
 	<!-- 数据渲染 -->
-	<script type="text/javascript" src="assets/jquery-1.11.3.min.js" async></script>
+	<script type="text/javascript" src="assets/jquery-1.11.3.min.js"></script>
+	<script src="assets/api/common.js"></script>
 	<script src="assets/api/index.js" async></script>
 </head>
 
@@ -70,7 +71,7 @@
 			<!-- /.title -->
 			<ul class="menu js__accordion">
 				<li class="current">
-					<a class="waves-effect" href="{{url('/')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Home</span></a>
+					<a class="waves-effect" href="{{url('/home')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Home</span></a>
 				</li>
 				<li>
 					<a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-desktop-mac"></i><span>User Interface</span><span class="menu-arrow fa fa-angle-down"></span></a>

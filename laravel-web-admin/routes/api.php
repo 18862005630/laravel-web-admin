@@ -22,7 +22,15 @@ Route::prefix('admin')->group(function (){
     //Admin文件夹下的控制器路由
     Route::namespace('Admin')->group(function () {
         Route::get('/user/register',"UserController@register");
-        Route::get('/user/login',"UserController@login")->middleware('refreshToken');
+        Route::get('/user/login',"UserController@login");
+
+        //需要token验证的路由
+        Route::group(['middleware'=>'jwt.auth'],function (){
+            Route::get('/user/logout',"UserController@logout");
+        });
+
+
+
     });
 
     //API路由

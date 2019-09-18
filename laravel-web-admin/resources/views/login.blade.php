@@ -198,24 +198,23 @@
 			function login(){
 				// alert(param)
 				if(param == 'login'){
-					token = getCookie('my_token')
+					// token = getCookie('my_token')
 					$.ajax({
 						headers: {
 							'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-							'Authorization': token
+							// 'Authorization': token
 						},
 						type:'get',
 						url:"{{url('api/admin/user/login')}}",
 						data:$("#form").serialize(),
-						success:function (data) {
-							var e = eval("(" + data + ")");
-							console.log(e)
-							console.log(e.msg)
-							if(e.code == 200){
-								layer.msg(e.msg, {offset:'rt',icon: 6});
-								window.location.href="{{url('/')}}";
+						success:function (data,statusTest,xhr) {
+							// console.log(xhr.getResponseHeader('Authorization'))
+							if(data.code == 200){
+								setTokenToCookie(xhr.getResponseHeader('Authorization'))
+								layer.msg(data.msg, {offset:'rt',icon: 6});
+								window.location.href="{{url('/home')}}";
 							}else{
-								layer.msg(e.msg, {offset:'rt',icon: 5});
+								layer.msg(data.msg, {offset:'rt',icon: 5});
 							}
 						}
 					});
@@ -228,7 +227,7 @@
 						url:"{{url('api/admin/user/register')}}",
 						data:$("#form").serialize(),
 						success:function (data,statusTest,xhr) {
-							console.log(data)
+							// console.log(data)
 							// console.log(xhr.getAllResponseHeaders());//获取所有的响应头消息
 							// console.log(xhr.getResponseHeader('Authorization'));//获取服务器信息
 							if(data.code == 200){
@@ -244,31 +243,9 @@
 
 			}
 
-			//将token保存到cookie
-			function setTokenToCookie(value) {
-				var Days = 1; //此 cookie 将被保存 30 天
-				var exp = new Date();
-				exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
-				document.cookie = "my_token =" + escape(value) + ";expires=" + exp.toGMTString();
-			}
-
-			//获取token
-			function getCookie(name) {
-				var cookieValue = "啥也没有！！";
-				if (document.cookie && document.cookie !== '') {
-					var cookies = document.cookie.split(';');
-					for (var i = 0; i < cookies.length; i++) {
-						var cookie = $.trim(cookies[i]);
-						if (cookie.substring(0, name.length + 1) === (name + '=')) {
-							cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-							break;
-						}
-					}
-				}
-				return cookieValue;
-			}
 		</script>
 	<script src="assets/jquery.min.js"></script>
-	<script src="assets/init.js"></script>	
+	<script src="assets/init.js"></script>
+	<script src="assets/api/common.js"></script>
 	</body>
 </html>

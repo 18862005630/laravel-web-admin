@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 //后台登录页
 Route::get('/login', function () {
     return view('login');
@@ -22,7 +26,8 @@ Route::get('/register', function () {
 
 Route::namespace('Admin')->group(function (){
     //后台首页
-    Route::get('/','IndexController@index');
+    Route::get('/home','IndexController@index');
+
 
 });
 
