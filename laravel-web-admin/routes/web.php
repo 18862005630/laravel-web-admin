@@ -28,6 +28,10 @@ Route::namespace('Admin')->group(function (){
     //后台首页
     Route::get('/home','IndexController@index');
 
+    //管理员信息
+    Route::get('/profile','IndexController@profile');
+
+
 
 });
 

@@ -97,4 +97,5 @@ class UserController extends Controller
             'msg' => '成功退出'
         ],JSON_UNESCAPED_UNICODE);
     }
+
 }
