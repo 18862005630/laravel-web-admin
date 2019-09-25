@@ -23,10 +23,12 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/jakub-onderka/php-console-highlighter" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/laravel/tinker" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/league/flysystem" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/mockery/mockery" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/myclabs/deep-copy" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/namshi/jose" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/nesbot/carbon" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/nunomaduro/collision" />
@@ -77,8 +79,10 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-iconv" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-intl-idn" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-mbstring" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-php56" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-php72" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-php73" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/polyfill-util" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/process" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/routing" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/service-contracts" />
@@ -87,6 +91,7 @@
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/theseer/tokenizer" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/tijsverkoyen/css-to-inline-styles" />
+      <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/tymon/jwt-auth" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/laravel-web-admin/vendor/webmozart/assert" />
     </content>

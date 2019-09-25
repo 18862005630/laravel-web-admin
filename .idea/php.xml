@@ -87,6 +87,11 @@
       <path value="$PROJECT_DIR$/laravel-web-admin/vendor/symfony/polyfill-php73" />
       <path value="$PROJECT_DIR$/laravel-web-admin/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/laravel-web-admin/vendor/symfony/polyfill-php72" />
+      <path value="$PROJECT_DIR$/laravel-web-admin/vendor/symfony/polyfill-php56" />
+      <path value="$PROJECT_DIR$/laravel-web-admin/vendor/symfony/polyfill-util" />
+      <path value="$PROJECT_DIR$/laravel-web-admin/vendor/namshi/jose" />
+      <path value="$PROJECT_DIR$/laravel-web-admin/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/laravel-web-admin/vendor/lcobucci/jwt" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />
