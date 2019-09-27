@@ -36,13 +36,12 @@
 
 	<!-- 数据渲染 -->
 	<script type="text/javascript" src="assets/jquery-1.11.3.min.js"></script>
-	<script src="assets/api/common.js"></script>
-	<script src="assets/api/index.js" async></script>
+	<script type="text/javascript" src="assets/api/common.js"></script>
+	<script type="text/javascript" src="assets/api/index.js" async></script>
 </head>
 
 <body>
 @extends('common.header')
-@section('title', 'Home')
 <div id="wrapper">
 	<div class="main-content">
 		<div class="row small-spacing">
@@ -438,5 +437,6 @@
 	<script src="assets/scripts/fullcalendar.init.js"></script>
 
 	<script src="assets/scripts/main.min.js"></script>
+
 </body>
 </html>

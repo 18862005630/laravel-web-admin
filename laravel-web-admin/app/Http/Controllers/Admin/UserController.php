@@ -45,7 +45,6 @@ class UserController extends Controller
 
         //验证通过，则获取用户信息
 //        $admin = auth()->user();
-
         return response()->json([
             'code' => 200,
             'msg' => '登录成功',

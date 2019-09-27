@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\AdminAccount;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -24,4 +25,23 @@ class IndexController extends Controller
            'data' => $data
        ],JSON_UNESCAPED_UNICODE);
    }
+
+    /**
+     * 修改参数POST
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function modifySite(Request $request){
+       $key = $request->key;
+       $value = $request->value;
+       //更新操作
+       Setting::where('id',1)->update([$key => $value]);
+
+        //更新成功后返回结果
+        return response()->json([
+            'code'=>200,
+            'msg' => "success",
+            'data' => $value
+        ],JSON_UNESCAPED_UNICODE);
+    }
 }

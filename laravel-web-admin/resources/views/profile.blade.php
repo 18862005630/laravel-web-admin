@@ -35,7 +35,6 @@
 
 <body>
 @extends('common.header')
-@section('title', 'Profile')
 <div id="wrapper">
     <div class="main-content">
         <div class="row small-spacing">

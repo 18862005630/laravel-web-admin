@@ -34,6 +34,9 @@ class AdminAccount extends Authenticatable implements JWTSubject
      */
     public function getJWTCustomClaims()
     {
-        return [];
+        //dd('test');
+        return [
+            'admin_id'=>$this->id,
+        ];
     }
 }
