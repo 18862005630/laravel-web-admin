@@ -13,7 +13,14 @@
 			pk: 1,
 			name: 'username',
 			title: 'Enter username',
-			mode: 'inline'
+			mode: 'inline',
+		});
+		$('#site_url').editable({
+			type: 'text',
+			pk: 1,
+			name: 'site_url',
+			title: 'Enter site_url',
+			mode: 'inline',
 		});
 
 		$('#inline-firstname').editable({
@@ -83,6 +90,15 @@
 				mode: 'inline'
 			});
 
+			$('#site_url').editable({
+				type: 'text',
+				pk: 1,
+				name: 'site_url',
+				title: 'Enter site_url',
+				mode: 'inline',
+			});
+
+
 			$('#inline-firstname').editable({
 				validate: function(value) {
 					if($.trim(value) === '') return 'This field is required';
@@ -145,6 +161,14 @@
 				title: 'Enter username'
 			});
 
+			$('#site_url').editable({
+				type: 'text',
+				pk: 1,
+				name: 'site_url',
+				title: 'Enter site_url',
+				mode: 'inline',
+			});
+
 			$('#inline-firstname').editable({
 				validate: function(value) {
 					if($.trim(value) === '') return 'This field is required';
@@ -197,15 +221,16 @@
 	});
 
 	function destroy_all(){
-		$('#inline-username').editable('destroy');
-		$('#inline-firstname').editable('destroy');
-		$('#inline-sex').editable('destroy');
-		$('#inline-status').editable('destroy');
-		$('#inline-group').editable('destroy');
-		$('#inline-dob').editable('destroy');
-		$('#inline-event').editable('destroy');
-		$('#inline-comments').editable('destroy');
-		$('#inline-fruits').editable('destroy'); 
+		$('#site_name').editable('destroy');
+		$('#site_url').editable('destroy');
+		$('#company_name').editable('destroy');
+		$('#company_addr').editable('destroy');
+		$('#mobile').editable('destroy');
+		$('#fax').editable('destroy');
+		$('#wx').editable('destroy');
+		$('#qq').editable('destroy');
+		$('#zip_code').editable('destroy');
+		$('#copyright').editable('destroy');
 		return false
 	}	
 

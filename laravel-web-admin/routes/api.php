@@ -36,6 +36,9 @@ Route::prefix('admin')->group(function (){
     //API路由
     Route::namespace('Api')->group(function () {
         Route::get('/index/index',"IndexController@index");
+
+
+        Route::post('/index/site/modify',"IndexController@modifySite");
     });
 
 

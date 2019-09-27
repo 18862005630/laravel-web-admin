@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect('/login');
-});
+
 
 //后台登录页
 Route::get('/login', function () {
     return view('login');
+})->name('login');
+
+Route::get('/', function () {
+    return redirect('/login');
 });
 
 Route::get('/register', function () {
@@ -27,9 +29,14 @@ Route::get('/register', function () {
 Route::namespace('Admin')->group(function (){
     //后台首页
     Route::get('/home','IndexController@index');
-
     //管理员信息
     Route::get('/profile','IndexController@profile');
+    //管理员设置页面
+    Route::get('/set','IndexController@set');
+    //UI-BUTTONS
+    Route::get('/buttons','IndexController@uiButtons');
+
+
 
 
 

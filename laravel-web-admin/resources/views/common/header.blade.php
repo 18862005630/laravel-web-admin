@@ -11,7 +11,7 @@
                 <i class="fa fa-caret-down js__drop_down_button"></i>
                 <div class="control-list">
                     <div class="control-item"><a href="{{url('/profile')}}"><i class="fa fa-user"></i> Profile</a></div>
-                    <div class="control-item"><a href="#"><i class="fa fa-gear"></i> Settings</a></div>
+                    <div class="control-item"><a href="{{url('/set')}}"><i class="fa fa-gear"></i> Settings</a></div>
                     <div class="control-item"><a href="#"><i class="fa fa-sign-out"></i> Log out</a></div>
                 </div>
                 <!-- /.control-list -->
@@ -23,17 +23,19 @@
     <!-- /.header -->
     <div class="content">
 
+{{--       左侧菜单--}}
         <div class="navigation">
             <h5 class="title">Navigation</h5>
             <!-- /.title -->
             <ul class="menu js__accordion">
-                <li class="current">
+
+                <li class="{{$title  == 'Home'?'current':''}}">
                     <a class="waves-effect" href="{{url('/home')}}"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Home</span></a>
                 </li>
-                <li>
+                <li class="{{$title  == 'Buttons'?'current active':''}}">
                     <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-desktop-mac"></i><span>User Interface</span><span class="menu-arrow fa fa-angle-down"></span></a>
                     <ul class="sub-menu js__content">
-                        <li><a href="ui-buttons.html">Buttons</a></li>
+                        <li class="{{$title  == 'Buttons'?'current':''}}"><a href="{{url('/buttons')}}">Buttons</a></li>
                         <li><a href="ui-cards.html">Cards</a></li>
                         <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
                         <li><a href="ui-components.html">Components</a></li>
@@ -43,11 +45,11 @@
                     </ul>
                     <!-- /.sub-menu js__content -->
                 </li>
-                <li>
+                <li class="{{$title  == 'Profile'?'current active':''}}">
                     <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-cube-outline"></i><span>Admin UI</span><span class="menu-arrow fa fa-angle-down"></span></a>
                     <ul class="sub-menu js__content">
                         <li><a href="ui-notification.html">Notification</a></li>
-                        <li><a href="{{url('/profile')}}">Profile</a></li>
+                        <li class="{{$title  == 'Profile'?'current':''}}"><a href="{{url('/profile')}}">Profile</a></li>
                         <li><a href="ui-range-slider.html">Range Slider</a></li>
                         <li><a href="ui-sweetalert.html">Sweet Alert</a></li>
                         <li><a href="ui-treeview.html">Tree view</a></li>
@@ -149,6 +151,7 @@
             </ul>
             <!-- /.menu js__accordion -->
         </div>
+{{--        左侧菜单--}}
         <!-- /.navigation -->
     </div>
     <!-- /.content -->
@@ -158,7 +161,7 @@
 <div class="fixed-navbar">
     <div class="pull-left">
         <button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
-        <h1 class="page-title">@yield('title')</h1>
+        <h1 class="page-title">{{$title}}</h1>
         <!-- /.page-title -->
     </div>
     <!-- /.pull-left -->
