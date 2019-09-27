@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 18/09/2019 15:39:41
+ Date: 27/09/2019 09:08:46
 */
 
 SET NAMES utf8mb4;
@@ -59,6 +59,32 @@ CREATE TABLE `admin_roles`  (
 INSERT INTO `admin_roles` VALUES (1, '超级管理员', '0', '2019-09-12 07:14:06', '2019-09-12 07:14:06');
 
 -- ----------------------------
+-- Table structure for admin_setting
+-- ----------------------------
+DROP TABLE IF EXISTS `admin_setting`;
+CREATE TABLE `admin_setting`  (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `site_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '站点名称',
+  `site_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '站点域名',
+  `company_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '公司名称',
+  `company_addr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '公司地址',
+  `mobile` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '联系电话',
+  `fax` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '传真',
+  `wx` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '微信',
+  `qq` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT 'QQ',
+  `zip_code` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '邮编',
+  `copyright` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL DEFAULT NULL COMMENT '版权归属',
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of admin_setting
+-- ----------------------------
+INSERT INTO `admin_setting` VALUES (1, '后台管理系统', 'http://127.0.0.1:8000', 'zyxchsjcdd', '深圳市龙华区', '19849975661', '123456789', '78945612', '123456789', '10000', 'Copyright © 2019.ZYX All rights reserved', '2019-09-25 15:52:51', '2019-09-27 00:43:15');
+
+-- ----------------------------
 -- Table structure for migrations
 -- ----------------------------
 DROP TABLE IF EXISTS `migrations`;
@@ -67,7 +93,7 @@ CREATE TABLE `migrations`  (
   `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of migrations
@@ -75,6 +101,7 @@ CREATE TABLE `migrations`  (
 INSERT INTO `migrations` VALUES (1, '2014_10_12_000000_create_users_table', 1);
 INSERT INTO `migrations` VALUES (2, '2019_09_12_035251_create_admin_accounts_table', 2);
 INSERT INTO `migrations` VALUES (3, '2019_09_12_035648_create_admin_roles_table', 3);
+INSERT INTO `migrations` VALUES (4, '2019_09_26_073446_create_admin_setting_table', 4);
 
 -- ----------------------------
 -- Table structure for users

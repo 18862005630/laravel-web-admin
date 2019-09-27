@@ -4,8 +4,7 @@ function setTokenToCookie(value) {
     var hour = 2;
     var exp = new Date();
     // exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);//天
-    // exp.setTime(exp.getTime() + hour *  60 * 60 * 1000);//小时
-    exp.setTime(exp.getTime() +  30000);//分钟
+    exp.setTime(exp.getTime() + hour *  60 * 60 * 1000);//2小时(与后端过期时间一致config/jwt.php)
 
     document.cookie = "my_token =" + escape(value) + ";expires=" + exp.toGMTString();
 }
