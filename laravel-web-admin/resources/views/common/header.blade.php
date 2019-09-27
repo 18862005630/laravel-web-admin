@@ -1,6 +1,6 @@
 <div class="main-menu">
     <header class="header">
-        <a href="index.html" class="logo"><i class="ico mdi mdi-cube-outline"></i>后台管理系统</a>
+        <a href="index.html" class="logo"><i class="ico mdi mdi-cube-outline"></i>{{$theme}}</a>
         <button type="button" class="button-close fa fa-times js__menu_close"></button>
         <div class="user">
             <a href="#" class="avatar"><img src="assets/images/avatar-sm-5.jpg" alt=""><span class="status online"></span></a>
@@ -12,7 +12,7 @@
                 <div class="control-list">
                     <div class="control-item"><a href="{{url('/profile')}}"><i class="fa fa-user"></i> Profile</a></div>
                     <div class="control-item"><a href="{{url('/set')}}"><i class="fa fa-gear"></i> Settings</a></div>
-                    <div class="control-item"><a href="#"><i class="fa fa-sign-out"></i> Log out</a></div>
+                    <div class="control-item"><a href="#" class="js__logout"><i class="fa fa-sign-out"></i> Log out</a></div>
                 </div>
                 <!-- /.control-list -->
             </div>
@@ -131,13 +131,13 @@
                     </ul>
                     <!-- /.sub-menu js__content -->
                 </li>
-                <li>
+                <li class="{{$title  == 'Photo'?'current active':''}}">
                     <a class="waves-effect parent-item js__control" href="#"><i class="menu-icon mdi mdi-folder-multiple"></i><span>Extra Pages</span><span class="menu-arrow fa fa-angle-down"></span></a>
                     <ul class="sub-menu js__content">
                         <li><a href="extras-contact.html">Contact list</a></li>
                         <li><a href="extras-email-template.html">Email template</a></li>
                         <li><a href="extras-faq.html">FAQ</a></li>
-                        <li><a href="extras-gallery.html">Gallery</a></li>
+                        <li class="{{$title  == 'Photo'?'current':''}}"><a href="{{url('/images')}}">Photo</a></li>
                         <li><a href="extras-invoice.html">Invoice</a></li>
                         <li><a href="extras-maps.html">Maps</a></li>
                         <li><a href="extras-pricing.html">Pricing</a></li>

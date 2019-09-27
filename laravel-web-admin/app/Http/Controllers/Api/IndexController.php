@@ -6,20 +6,27 @@ use App\Models\AdminAccount;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
+/**
+ * Class IndexController
+ * @package App\Http\Controllers\Api
+ * 接口数据输出控制
+ */
 class IndexController extends Controller
 {
    public function index(){
        //获取登录管理员
+       $user = JWTAuth::parseToken()->authenticate();
        $userInfo = AdminAccount::from('admin_accounts as a')
            ->leftjoin('admin_roles as b','a.role_id','b.id')
-           ->where('a.id',1)
+           ->where('a.id',$user->id)
            ->select('a.account','b.name')
            ->first();
 
        $data['userInfo'] = $userInfo;
 
-       return json_encode([
+       return response()->json([
            'code' => 200,
            'msg' => 'success',
            'data' => $data

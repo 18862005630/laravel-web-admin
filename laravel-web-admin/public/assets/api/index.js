@@ -7,9 +7,23 @@ window.onload = function()
         window.location.href="/login";
     }
 
+    //测试版(无token验证)
+    // $.getJSON("api/admin/index/index", function(json) {
+    //     $(".account").html(json.data.userInfo.account)
+    //     $(".position").html(json.data.userInfo.name)
+    // });
 
-    $.getJSON("api/admin/index/index", function(json) {
-        $(".account").html(json.data.userInfo.account)
-        $(".position").html(json.data.userInfo.name)
-    });
+    //用户登录成功，获取登录用户的信息
+    $.ajax({
+        headers: {
+            'Authorization':getCookie('my_token')
+        },
+        type:'get',
+        url:"api/admin/index/index",
+        success:function (json) {
+            // console.log(json.data.userInfo.account)
+            $(".account").html(json.data.userInfo.account)
+            $(".position").html(json.data.userInfo.name)
+        }
+    })
 }

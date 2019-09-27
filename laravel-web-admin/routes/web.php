@@ -35,6 +35,8 @@ Route::namespace('Admin')->group(function (){
     Route::get('/set','IndexController@set');
     //UI-BUTTONS
     Route::get('/buttons','IndexController@uiButtons');
+    //相册
+    Route::get('/images','IndexController@uiImages');
 
 
 

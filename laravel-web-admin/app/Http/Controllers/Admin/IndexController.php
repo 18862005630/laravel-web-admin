@@ -4,12 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Entity\SystemController as System;
 use App\Models\AdminAccount;
+use App\Models\Photo;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\JWTAuth;
+
+/**
+ * Class IndexController
+ * @package App\Http\Controllers\Admin
+ * 页面渲染控制
+ */
 
 class IndexController extends Controller
 {
@@ -66,5 +73,19 @@ class IndexController extends Controller
         $this->system->setTitle("Buttons");
 
         return view("ui_buttons",$this->system->getOut());
+    }
+
+    /**
+     * 相册页面
+     *
+     */
+    public function uiImages(){
+        $photos = Photo::all()->toArray();
+
+        $this->system->setTitle("Photo");
+        $this->system->setParams(['photos' => $photos]);
+//        dd($this->system->getOut());
+
+        return view("ui_images",$this->system->getOut());
     }
 }

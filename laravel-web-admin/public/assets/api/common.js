@@ -38,4 +38,26 @@ function getCookie(name) {
     return cookieValue;
 }
 
+//退出
+$(".fa-sign-out").click(function () {
+    $.ajax({
+        headers: {
+            'Authorization':getCookie('my_token')
+        },
+        type:'get',
+        url:"api/admin/user/logout",
+        success:function (data) {
+            console.log(data.code)
+            if(data.code == 200){
+                //退出成功将cookie中的token置空
+                setTokenToCookie('');
+                e&&swal({title:"Logout success",text:"See you later!",type:"success",confirmButtonColor:"#304ffe"})
+                setTimeout(function(){window.location.href="/login"},1000)
+            }
+        }
+    })
+});
+
+
+
 
